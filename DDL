@@ -25,4 +25,40 @@ COMMENT
 ALTER TABLE Students COMMENT = 'Stores student details';
 
 
+-- Create Departments table
+CREATE TABLE Departments (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(50) NOT NULL
+);
+
+-- Create Employees table with Foreign Key
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(100) NOT NULL,
+    Salary DECIMAL(10,2),
+    DeptID INT,
+    CONSTRAINT fk_department FOREIGN KEY (DeptID) REFERENCES Departments(DeptID)
+);
+
+-- Insert into Departments
+INSERT INTO Departments VALUES (1, 'HR');
+INSERT INTO Departments VALUES (2, 'IT');
+INSERT INTO Departments VALUES (3, 'Finance');
+
+-- Insert into Employees (only valid DeptID can be inserted)
+INSERT INTO Employees VALUES (101, 'Alice', 50000, 1);
+INSERT INTO Employees VALUES (102, 'Bob', 60000, 2);
+INSERT INTO Employees VALUES (103, 'Charlie', 55000, 3);
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(100) NOT NULL,
+    Salary DECIMAL(10,2),
+    DeptID INT,
+    CONSTRAINT fk_department FOREIGN KEY (DeptID) 
+        REFERENCES Departments(DeptID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
 
