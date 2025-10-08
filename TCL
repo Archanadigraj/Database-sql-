@@ -1,0 +1,41 @@
+TCL Commands
+
+ (A) COMMIT → Save changes permanently
+INSERT INTO Employees (EmpID, EmpName, Salary, DeptID)
+VALUES (201, 'John', 55000, 2);
+
+COMMIT;
+------------------------------------------
+(B) ROLLBACK → Undo changes (before commit)
+DELETE FROM Employees WHERE DeptID = 2;
+
+ROLLBACK;
+------------------------------------------
+(C) SAVEPOINT → Create checkpoints inside a transaction
+BEGIN;
+
+UPDATE Employees SET Salary = Salary + 5000 WHERE DeptID = 1;
+SAVEPOINT sp1;
+
+UPDATE Employees SET Salary = Salary + 7000 WHERE DeptID = 2;
+SAVEPOINT sp2;
+
+ROLLBACK TO sp1;   -- undo second update, keep first update
+
+COMMIT;
+
+CL Workflow Example (Bank Transfer)
+-- Start transaction
+BEGIN;
+
+-- Debit account A
+UPDATE Accounts SET Balance = Balance - 1000 WHERE AccID = 101;
+
+-- Credit account B
+UPDATE Accounts SET Balance = Balance + 1000 WHERE AccID = 202;
+
+-- If all successful
+COMMIT;
+
+-- If something goes wrong
+ROLLBACK;
