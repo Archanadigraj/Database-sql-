@@ -1,6 +1,28 @@
+CREATE:
 CREATE TABLE Students (
     StudentID INT PRIMARY KEY,
     Name VARCHAR(50) NOT NULL,
     Age INT,
     Course VARCHAR(50)
 );
+
+ALTER:
+ALTER TABLE Students ADD Email VARCHAR(100);
+ALTER TABLE Students MODIFY Age SMALLINT;
+ALTER TABLE Students RENAME COLUMN Course TO Subject;
+
+DROP: 
+DROP TABLE Students;
+DROP DATABASE SchoolDB;
+
+TRUNCATE:
+TRUNCATE TABLE Students;
+
+RENAME
+RENAME TABLE Students TO CollegeStudents;
+
+COMMENT
+ALTER TABLE Students COMMENT = 'Stores student details';
+
+
+
