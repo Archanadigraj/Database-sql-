@@ -1,0 +1,38 @@
+INSERT 
+INSERT INTO Employees (EmpID, EmpName, Salary, DeptID)
+VALUES (101, 'Alice', 50000, 1);
+INSERT INTO Employees (EmpID, EmpName)
+VALUES (102, 'Bob');
+INSERT INTO Employees (EmpID, EmpName)
+VALUES (102, 'Bob');
+
+UPDATE
+UPDATE Employees
+SET Salary = 65000
+WHERE EmpID = 103;
+UPDATE Employees
+SET EmpName = 'Alice Johnson', Salary = 70000
+WHERE EmpID = 101;
+UPDATE Employees
+SET Salary = Salary * 1.1;   -- 10% salary hike for all
+
+DELETE   
+DELETE FROM Employees
+WHERE EmpID = 104;
+DELETE FROM Employees
+WHERE DeptID = 3;
+DELETE FROM Employees;
+
+SELECT
+SELECT * FROM Employees;
+SELECT EmpName, Salary FROM Employees;
+SELECT * FROM Employees
+WHERE Salary > 60000;
+SELECT * FROM Employees
+ORDER BY Salary DESC;
+SELECT COUNT(*) AS TotalEmployees, AVG(Salary) AS AvgSalary
+FROM Employees;
+SELECT DeptID, AVG(Salary) AS DeptAvgSalary
+FROM Employees
+GROUP BY DeptID;
+  
