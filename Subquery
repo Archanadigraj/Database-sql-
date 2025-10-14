@@ -1,0 +1,10 @@
+1.Single-row Subquery
+SELECT EmpName, Salary
+FROM Employees
+WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+-------------------------------------------------------------
+2.Multi-row Subquery
+SELECT EmpName, DeptID
+FROM Employees
+WHERE DeptID IN (SELECT DeptID FROM Departments WHERE DeptName IN ('HR','Finance'));
+---------------------------------------------------------------------------------------
