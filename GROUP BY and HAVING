@@ -1,0 +1,22 @@
+GROUP BY
+SELECT DeptID, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY DeptID;
+---------------------------
+HAVING
+SELECT DeptID, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY DeptID
+HAVING AVG(Salary) > 55000;
+--------------------------------
+GROUP BY with multiple columns
+SELECT DeptID, Salary, COUNT(*) AS CountEmp
+FROM Employees
+GROUP BY DeptID, Salary;
+---------------------------------------
+ORDER BY with GROUP BY
+SELECT DeptID, SUM(Salary) AS TotalSalary
+FROM Employees
+GROUP BY DeptID
+ORDER BY TotalSalary DESC;
+
